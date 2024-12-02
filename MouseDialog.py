@@ -28,11 +28,12 @@ class MouseDialog(QDialog):
         self.ui.layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.button_group_action = QButtonGroup()
+        self.button_group_action.addButton(self.ui.nothing_button)
         self.button_group_action.addButton(self.ui.single_click_button)
         self.button_group_action.addButton(self.ui.double_click_button)
         self.button_group_action.addButton(self.ui.press_button)
         self.button_group_action.addButton(self.ui.release_button)
-        self.ui.single_click_button.click()
+        self.ui.nothing_button.click()
 
         self.button_group = QButtonGroup()
         self.button_group.addButton(self.ui.lm_button)
@@ -72,7 +73,9 @@ class MouseDialog(QDialog):
     def get(self):
         line = self.button_group_action.checkedButton().text()
         action = None
-        if line == Consts.SINGLE_CLICK:
+        if line == Consts.NOTHING:
+            action = Actions.MouseAction.NOTHING
+        elif line == Consts.SINGLE_CLICK:
             action = Actions.MouseAction.SINGLE_CLICK
         elif line == Consts.DOUBLE_CLICK:
             action = Actions.MouseAction.DOUBLE_CLICK
@@ -100,7 +103,7 @@ class MouseDialog(QDialog):
         x = int(self.x_edit.text())
         y = int(self.y_edit.text())
 
-        duration = int(self.duration_edit.text())
+        duration = float(self.duration_edit.text().replace(",", "."))
 
         wheel = int(self.mouse_wheel.text())
 

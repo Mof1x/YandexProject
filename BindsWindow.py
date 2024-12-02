@@ -21,10 +21,10 @@ class BindsWindow(QMainWindow):
         self.ui = Ui_BindsWindow.Ui_MainWindow()
         self.ui.setupUi(self)
 
-        for key, value in self.settings.value(Consts.BINDS, Consts.DEFAULT_BINDS).items():
+        for key, bind in self.settings.value(Consts.BINDS, Consts.DEFAULT_BINDS).items():
             item = QListWidgetItem(self.ui.list_widget)
             self.ui.list_widget.addItem(item)
-            row = BindItem.BindItem(self.ui.list_widget, item, key, value)
+            row = BindItem.BindItem(self.ui.list_widget, item, key, bind)
             item.setSizeHint(row.minimumSizeHint())
             self.ui.list_widget.setItemWidget(item, row)
 

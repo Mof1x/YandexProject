@@ -23,7 +23,7 @@ DEFAULT_HOTKEY = "B"
 #Текстовые переменные
 CHANGE = "Изменить"
 APPLY = "Подтвердить"
-EMERGENCY_STOP = "Экстреный стоп"
+EMERGENCY_EXIT = "Экстреный выход"
 BINDS = "Бинды"
 ADD_BINDS = "Добавить бинды"
 BACK = "Назад"
@@ -49,6 +49,7 @@ ACTION = "Действие"
 HOTKEY = "Горячие клавиши"
 LMB = "ЛКМ"
 RMB = "ПКМ"
+NOTHING = "Ничего"
 #
 
 

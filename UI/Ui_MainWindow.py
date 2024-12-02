@@ -8,6 +8,8 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+import Consts
+
 
 class Ui_MainWindow(object):
     def __init__(self):
@@ -85,6 +87,6 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.emergency_stop_button.setText(_translate("MainWindow", "PushButton"))
-        self.emergency_stop_button_settings.setText(_translate("MainWindow", "PushButton"))
-        self.binds_button.setText(_translate("MainWindow", "PushButton"))
-        self.add_binds_button.setText(_translate("MainWindow", "PushButton"))
+        self.emergency_stop_button_settings.setText(_translate("MainWindow", ""))
+        self.binds_button.setText(_translate("MainWindow", Consts.BINDS))
+        self.add_binds_button.setText(_translate("MainWindow", Consts.ADD_BINDS))

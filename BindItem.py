@@ -1,3 +1,4 @@
+import keyboard
 from PyQt6.QtCore import QSettings
 from PyQt6.QtGui import QIcon
 
@@ -8,13 +9,15 @@ from UI import Ui_BindItem
 
 
 class BindItem(QWidget):
-    def __init__(self, list_widget, item, name, value):
+    def __init__(self, list_widget, item, name, bind):
         super().__init__()
 
         self.list_widget = list_widget
         self.item = item
         self.name = name
-        self.value = value
+        self.bind = bind
+        self.value = bind.actions
+        self.hotkey = bind.hotkey
         self.settings = QSettings()
         self.initUi()
 
@@ -25,7 +28,7 @@ class BindItem(QWidget):
         self.ui.delete_button.setIcon(QIcon("Icons/" + Consts.TRASHCAN_ICON))
 
         self.ui.name_label.setText(self.name)
-        self.ui.hotkey_label.setText(self.value[0])
+        self.ui.hotkey_label.setText(self.hotkey)
 
         self.ui.delete_button.clicked.connect(self.deleteButton)
         self.ui.check_box.clicked.connect(self.onOff)
@@ -41,6 +44,8 @@ class BindItem(QWidget):
 
     def onOff(self):
         if self.ui.check_box.isChecked():
-            self.value[1][0].play()
+            keyboard.add_hotkey(self.hotkey.lower(), self.bind.play)
+        else:
+            keyboard.remove_hotkey(self.hotkey.lower())
 
 

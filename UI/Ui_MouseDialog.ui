@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>723</width>
-    <height>464</height>
+    <height>511</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,6 +33,13 @@
      </property>
      <item>
       <layout class="QHBoxLayout" name="radio_button_layout">
+       <item>
+        <widget class="QRadioButton" name="nothing_button">
+         <property name="text">
+          <string>RadioButton!</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QRadioButton" name="single_click_button">
          <property name="text">

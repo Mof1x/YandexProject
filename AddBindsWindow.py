@@ -1,3 +1,4 @@
+import Bind
 import Consts
 import SettingDialog
 import AddActionItem
@@ -67,7 +68,8 @@ class AddBindsWindow(QMainWindow):
                 widget = self.ui.list_widget.itemWidget(item)
                 arr.append(widget.action)
             v = self.settings.value(Consts.BINDS, Consts.DEFAULT_BINDS)
-            v[self.ui.line_edit.text()] = [self.ui.hotkey_label.text()[len(Consts.HOTKEY) + 1:], arr]
+            v[self.ui.line_edit.text()] = Bind.Bind(self.ui.line_edit.text(),
+                                                    self.ui.hotkey_label.text()[len(Consts.HOTKEY) + 1:], arr)
             self.settings.setValue(Consts.BINDS, v)
 
     def goToSettings(self):

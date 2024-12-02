@@ -7,14 +7,14 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-import Consts
 
+import Consts
 
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(723, 464)
+        Dialog.resize(723, 511)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.layout = QtWidgets.QVBoxLayout()
@@ -23,6 +23,9 @@ class Ui_Dialog(object):
         self.layout.setObjectName("layout")
         self.radio_button_layout = QtWidgets.QHBoxLayout()
         self.radio_button_layout.setObjectName("radio_button_layout")
+        self.nothing_button = QtWidgets.QRadioButton(parent=Dialog)
+        self.nothing_button.setObjectName("nothing_button")
+        self.radio_button_layout.addWidget(self.nothing_button)
         self.single_click_button = QtWidgets.QRadioButton(parent=Dialog)
         self.single_click_button.setObjectName("single_click_button")
         self.radio_button_layout.addWidget(self.single_click_button)
@@ -95,7 +98,6 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", Consts.MOUSE_ACTION))
         self.single_click_button.setText(_translate("Dialog", Consts.SINGLE_CLICK))
         self.double_click_button.setText(_translate("Dialog", Consts.DOUBLE_CLICK))
@@ -109,5 +111,4 @@ class Ui_Dialog(object):
         self.lm_button.setText(_translate("Dialog", Consts.LMB))
         self.rm_button.setText(_translate("Dialog", Consts.RMB))
         self.cm_button.setText(_translate("Dialog", Consts.MOUSE_WHEEL))
-
-
+        self.nothing_button.setText(_translate("Dialog", Consts.NOTHING))

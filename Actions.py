@@ -8,6 +8,19 @@ from PyQt6.QtWidgets import QFormLayout
 import Consts
 
 
+class Cycle:
+    def __init__(self, n, arr):
+        self.n = n
+        self.arr = arr
+
+    def play(self):
+        for _ in range(self.n):
+            for action in self.arr:
+                action.play()
+
+
+
+
 class Sleep:
     def __init__(self, time=0):
         self.time = time
@@ -77,3 +90,6 @@ class KeyboardAction:
             keyboard.send(self.key)
         elif self.write:
             keyboard.write(self.text, delay=self.delay)
+
+
+
