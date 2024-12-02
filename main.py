@@ -9,8 +9,8 @@ import MainWindow, BindsWindow, AddBindsWindow
 from PyQt6.QtCore import QCoreApplication
 
 if __name__ == '__main__':
-    sys.path.append('../')
-    sys.path.append('..')
+    sys.path.append('/')
+    sys.path.append('')
     QCoreApplication.setOrganizationName(Consts.ORGANIZATION_NAME)
     QCoreApplication.setApplicationName(Consts.APPLICATION_NAME)
     app = QApplication(sys.argv)
