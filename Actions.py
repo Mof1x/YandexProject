@@ -19,8 +19,6 @@ class Cycle:
                 action.play()
 
 
-
-
 class Sleep:
     def __init__(self, time=0):
         self.time = time
@@ -54,6 +52,12 @@ class MouseAction:
         self.arr = [action, button, action_move, x_y[0], x_y[1], duration, wheel]
 
     def play(self):
+
+        if self.DRAG == self.action_move:
+            mouse.move(*self.x_y, duration=self.duration, absolute=False)
+        elif self.MOVE == self.action_move:
+            mouse.move(*self.x_y, duration=self.duration)
+
         if self.SINGLE_CLICK == self.action:
             mouse.click(button=self.button)
         elif self.DOUBLE_CLICK == self.action:
@@ -62,11 +66,6 @@ class MouseAction:
             mouse.press(button=self.button)
         elif self.RELEASE == self.action:
             mouse.release(button=self.button)
-
-        if self.DRAG == self.action_move:
-            mouse.move(*self.x_y, duration=self.duration, absolute=False)
-        elif self.DRAG == self.action_move:
-            mouse.move(*self.x_y, duration=self.duration)
 
         mouse.wheel(self.wheel)
 
@@ -90,6 +89,3 @@ class KeyboardAction:
             keyboard.send(self.key)
         elif self.write:
             keyboard.write(self.text, delay=self.delay)
-
-
-

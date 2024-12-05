@@ -1,3 +1,4 @@
+
 import Actions
 import Consts
 import SettingDialog
@@ -31,8 +32,6 @@ class MainWindow(QMainWindow):
             Consts.EMERGENCY_EXIT + " " + self.settings.value(Consts.SETTINGS_EMERGENCY_STOP,
                                                               Consts.DEFAULT_EMERGENCY_STOP))
         self.ui.emergency_stop_button.clicked.connect(self.finish)
-
-
 
         self.ui.emergency_stop_button_settings.setIcon(QIcon("Icons/" + Consts.SETTINGS_ICON))
         self.ui.emergency_stop_button_settings.clicked.connect(self.goToSettings)

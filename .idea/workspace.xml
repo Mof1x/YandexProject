@@ -4,20 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d8253c5-fcf4-4bfc-86de-0e73d4f1ec5a" name="Changes" comment="Start">
-      <change afterPath="$PROJECT_DIR$/Bind.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1d8253c5-fcf4-4bfc-86de-0e73d4f1ec5a" name="Changes" comment="add Mouse Actions">
+      <change afterPath="$PROJECT_DIR$/CycleItem.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Icons/edit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ListWidget.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Actions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Actions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddActionItem.py" beforeDir="false" afterPath="$PROJECT_DIR$/AddActionItem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AddBindsWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/AddBindsWindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BindItem.py" beforeDir="false" afterPath="$PROJECT_DIR$/BindItem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BindsWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/BindsWindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Consts.py" beforeDir="false" afterPath="$PROJECT_DIR$/Consts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MouseDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/MouseDialog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/Ui_MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/Ui_MainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/Ui_MouseDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/Ui_MouseDialog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/Ui_MouseDialog.ui" beforeDir="false" afterPath="$PROJECT_DIR$/UI/Ui_MouseDialog.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SettingsWindow.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/Ui_AddBindsWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/Ui_AddBindsWindow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,7 @@
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/PycharmProjects/pythonProject123&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/PycharmProjects/YandexProject/Icons&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -62,6 +61,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\PycharmProjects\YandexProject\Icons" />
       <recent name="C:\Users\User\PycharmProjects\YandexProject" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -120,7 +120,8 @@
       <workItem from="1733153493619" duration="707000" />
       <workItem from="1733158914693" duration="172000" />
       <workItem from="1733164380673" duration="3432000" />
-      <workItem from="1733168842836" duration="1771000" />
+      <workItem from="1733168842836" duration="2027000" />
+      <workItem from="1733322706619" duration="18720000" />
     </task>
     <task id="LOCAL-00001" summary="Start">
       <option name="closed" value="true" />
@@ -138,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733151344531</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add Mouse Actions">
+      <option name="closed" value="true" />
+      <created>1733170877846</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733170877846</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,11 +178,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Start" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start" />
+    <MESSAGE value="add Mouse Actions" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Mouse Actions" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/YandexProject$MouseDialog.coverage" NAME="MouseDialog Coverage Results" MODIFIED="1733165287487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/YandexProject$AddBindsWindow.coverage" NAME="AddBindsWindow Coverage Results" MODIFIED="1733151477230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/YandexProject$main.coverage" NAME="main Coverage Results" MODIFIED="1733170540337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/YandexProject$main.coverage" NAME="main Coverage Results" MODIFIED="1733344236364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

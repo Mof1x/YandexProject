@@ -8,6 +8,7 @@ from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QPushButton, QListWidgetItem
 from PyQt6.QtWidgets import QMainWindow
 
+from ListWidget import ListWidget
 from UI import Ui_AddBindsWindow
 
 
@@ -29,12 +30,9 @@ class AddBindsWindow(QMainWindow):
         self.ui.line_edit.setPlaceholderText(Consts.LABEL)
         self.ui.hotkey_button.setIcon(QIcon("Icons/" + Consts.SETTINGS_ICON))
 
-        item = QListWidgetItem(self.ui.list_widget)
-        add_button = QPushButton(Consts.ADD_ACTION)
-        add_button.clicked.connect(self.addBind)
-        row = AddActionItem.AddActionItem(self.ui.list_widget, item)
-        item.setSizeHint(row.minimumSizeHint())
-        self.ui.list_widget.setItemWidget(item, add_button)
+        self.list_widget = ListWidget(self)
+        self.ui.parent_layout.addWidget(self.list_widget)
+
 
         self.ui.back_button.clicked.connect(self.goToMain)
         self.ui.apply_button.clicked.connect(self.apply)
@@ -43,29 +41,15 @@ class AddBindsWindow(QMainWindow):
     def goToMain(self):
         self.widget.setCurrentIndex(self.widget.currentIndex() - 2)
 
-    def addBind(self):
-        self.ui.list_widget.takeItem(self.ui.list_widget.currentIndex().row())
-
-        item = QListWidgetItem(self.ui.list_widget)
-        self.ui.list_widget.addItem(item)
-        row = AddActionItem.AddActionItem(self.ui.list_widget, item)
-        item.setSizeHint(row.minimumSizeHint())
-        self.ui.list_widget.setItemWidget(item, row)
-
-        item = QListWidgetItem(self.ui.list_widget)
-        add_button = QPushButton(Consts.ADD_ACTION)
-        item.setSizeHint(row.minimumSizeHint())
-        self.ui.list_widget.setItemWidget(item, add_button)
-        add_button.clicked.connect(self.addBind)
 
     def apply(self):
         arr = []
         if self.ui.line_edit.text() in self.settings.value(Consts.BINDS, Consts.DEFAULT_BINDS).keys():
             print("неверное имя")
         else:
-            for i in range(self.ui.list_widget.count() - 1):
-                item = self.ui.list_widget.item(i)
-                widget = self.ui.list_widget.itemWidget(item)
+            for i in range(self.list_widget.count() - 1):
+                item = self.list_widget.item(i)
+                widget = self.list_widget.itemWidget(item)
                 arr.append(widget.action)
             v = self.settings.value(Consts.BINDS, Consts.DEFAULT_BINDS)
             v[self.ui.line_edit.text()] = Bind.Bind(self.ui.line_edit.text(),

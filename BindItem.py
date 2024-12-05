@@ -33,7 +33,6 @@ class BindItem(QWidget):
         self.ui.delete_button.clicked.connect(self.deleteButton)
         self.ui.check_box.clicked.connect(self.onOff)
 
-
     def deleteButton(self):
 
         hotkeys = self.settings.value(Consts.BINDS, Consts.DEFAULT_BINDS)

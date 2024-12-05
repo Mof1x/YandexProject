@@ -8,6 +8,7 @@ APPLICATION_ICON = "icon.png"
 
 SETTINGS_ICON = "setting.png"
 TRASHCAN_ICON = "trashcan.png"
+EDIT_ICON = "edit.png"
 
 
 #Ключи от QSettings
@@ -50,6 +51,11 @@ HOTKEY = "Горячие клавиши"
 LMB = "ЛКМ"
 RMB = "ПКМ"
 NOTHING = "Ничего"
+ARE_YOU_SURE = "Вы уверены?"
+YES = "Да"
+NO = "Нет"
+MILLISECONDS = "Миллисекунды"
+ALWAYS = "Всегда"
 #
 
 
