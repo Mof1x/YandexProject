@@ -14,7 +14,6 @@ class Bind:
         self.actions = actions
 
 
-
 class Worker(QRunnable):
     def __init__(self, bind):
         self.name = bind.name
@@ -24,40 +23,32 @@ class Worker(QRunnable):
         self.settings = QSettings()
         super().__init__()
 
-
     @pyqtSlot()
     def run(self):
-
         self.threadpool = QThreadPool()
         plays = self.settings.value(Consts.SETTINGS_PLAYS)
         stops = self.settings.value(Consts.SETTINGS_STOPS)
-
         if self.hotkey not in plays:
             keyboard.add_hotkey(self.hotkey, self.flagUp)
-            plays.add(self.hotkey)
+            plays.append(self.hotkey)
             self.settings.setValue(Consts.SETTINGS_PLAYS, plays)
             for action in self.actions:
                 action.play(self.name)
             if self.hotkey in plays:
                 plays.remove(self.hotkey)
-            if self.name in stops:
-                stops.remove(self.name)
-            keyboard.remove_hotkey(self.hotkey)
+            if self.hotkey in stops:
+                stops.remove(self.hotkey)
+            try:
+                keyboard.remove_hotkey(self.hotkey)
+            except Exception:
+                pass
             self.settings.setValue(Consts.SETTINGS_PLAYS, plays)
             self.settings.setValue(Consts.SETTINGS_STOPS, stops)
-
-
 
     def flagUp(self):
         stops = self.settings.value(Consts.SETTINGS_STOPS)
         try:
-            stops.add(self.name)
+            stops.append(self.hotkey)
             self.settings.setValue(Consts.SETTINGS_STOPS, stops)
         except Exception:
             pass
-
-
-
-
-
-

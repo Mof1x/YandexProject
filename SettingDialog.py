@@ -21,8 +21,8 @@ class Settings(QDialog):
     def initUI(self):
         self.ui = Ui_SettingsWindow.Ui_Dialog()
         self.ui.setupUi(self)
+        self.setWindowIcon(QIcon("Icons/" + Consts.SETTINGS_ICON))
         self.setWindowTitle("Назначьте кнопку")
-        self.setWindowIcon(QIcon(Consts.SETTINGS_ICON))
 
         self.ui.label.setText(self.settings.value(self.key, self.value))
         self.ui.change_button.setText(Consts.CHANGE)

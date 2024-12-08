@@ -13,32 +13,32 @@ class Cycle:
         self.n = n
         self.arr = arr
 
-    def play(self, name):
+    def play(self, hotkey):
         settings = QSettings()
         if self.always:
             while True:
                 stops = settings.value(Consts.SETTINGS_STOPS, set())
-                if name in stops:
+                if hotkey in stops:
                     return None
                 for action in self.arr:
-                    action.play(name)
+                    action.play(hotkey)
         else:
             for _ in range(self.n):
                 stops = settings.value(Consts.SETTINGS_STOPS, set())
-                if name in stops:
+                if hotkey in stops:
                     return None
                 for action in self.arr:
-                    action.play(name)
+                    action.play(hotkey)
 
 
 class Sleep:
     def __init__(self, time=0):
         self.time = time / 1000
 
-    def play(self, name):
+    def play(self, hotkey):
         settings = QSettings()
         stops = settings.value(Consts.SETTINGS_STOPS, set())
-        if name in stops:
+        if hotkey in stops:
             return None
         time.sleep(self.time)
 
@@ -68,10 +68,10 @@ class MouseAction:
         self.wheel = wheel
         self.arr = [action, button, action_move, x_y[0], x_y[1], duration, wheel]
 
-    def play(self, name):
+    def play(self, hotkey):
         settings = QSettings()
         stops = settings.value(Consts.SETTINGS_STOPS, set())
-        if name in stops:
+        if hotkey in stops:
             return None
         if self.DRAG == self.action_move:
             mouse.move(*self.x_y, duration=self.duration, absolute=False)
@@ -101,10 +101,10 @@ class KeyboardAction:
         self.action = action
         self.text = text
 
-    def play(self, name):
+    def play(self, hotkey):
         settings = QSettings()
         stops = settings.value(Consts.SETTINGS_STOPS, set())
-        if name in stops:
+        if hotkey in stops:
             return None
         if self.action == self.PRESS:
             keyboard.press(self.key)

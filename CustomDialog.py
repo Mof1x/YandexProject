@@ -1,5 +1,7 @@
+from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QDialog
 
+import Consts
 from UI import Ui_AcceptDialog
 
 
@@ -9,6 +11,7 @@ class CustomDialog(QDialog):
 
         self.ui = Ui_AcceptDialog.Ui_Dialog()
         self.ui.setupUi(self)
+        self.setWindowIcon(QIcon("Icons/" + Consts.APPLICATION_ICON))
 
     def keyPressEvent(self, event):
         pass

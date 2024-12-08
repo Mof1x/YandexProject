@@ -46,11 +46,10 @@ class MouseDialog(QDialog):
         self.button_group_move_action.addButton(self.ui.move_in_button)
         self.ui.move_on_button.click()
 
-        self.x_edit = QLineEdit("0")
-        self.y_edit = QLineEdit("0")
-        self.x_edit.setValidator(QIntValidator(-(10 ** 6), 10 ** 6))
-        self.y_edit.setValidator(QIntValidator(-(10 ** 6), 10 ** 6))
-
+        self.x_edit = QSpinBox()
+        self.y_edit = QSpinBox()
+        self.x_edit.setRange(-(10 ** 6), 10 ** 6)
+        self.y_edit.setRange(-(10 ** 6), 10 ** 6)
         self.ui.x_edit_layout.addRow("X: ", self.x_edit)
         self.ui.y_edit_layout.addRow("Y: ", self.y_edit)
 
@@ -104,5 +103,5 @@ class MouseDialog(QDialog):
 
         wheel = int(self.mouse_wheel.text())
 
-        return Actions.MouseAction(action=action, button=button, action_move=action_move, x_y=(x, y), duration=duration,
+        return Actions.MouseAction(action=action, button=button, action_move=action_move, x_y=(x, -y), duration=duration,
                                    wheel=wheel)

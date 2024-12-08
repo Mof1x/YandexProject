@@ -18,11 +18,13 @@ SETTINGS_BINDS = "binds"
 SETTINGS_HOTKEY = "hotkeys"
 SETTINGS_PLAYS = "plays"
 SETTINGS_STOPS = "stops"
+SETTINGS_ON_OFF_BINDS = "onOffBinds"
 
 
 DEFAULT_EMERGENCY_STOP = "Esc"
 DEFAULT_BINDS = dict()
 DEFAULT_HOTKEY = "B"
+DEFAULT_ON_OFF_BINDS = dict()
 
 #Текстовые переменные
 CHANGE = "Изменить"

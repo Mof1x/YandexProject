@@ -47,6 +47,9 @@ class AddBindsWindow(QMainWindow):
             v[self.ui.line_edit.text()] = Bind.Bind(self.ui.line_edit.text(),
                                                     self.ui.hotkey_label.text()[len(Consts.HOTKEY) + 1:], actions)
             self.settings.setValue(Consts.BINDS, v)
+            self.widget.setCurrentIndex(self.widget.currentIndex() - 2)
+
+
 
     def goToSettings(self):
         self.w1 = SettingDialog.Settings(Consts.SETTINGS_HOTKEY, Consts.DEFAULT_HOTKEY)
