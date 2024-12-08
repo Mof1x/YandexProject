@@ -1,12 +1,16 @@
 import sys
 
+import keyboard
 from PyQt6.QtGui import QIcon
-from PyQt6.QtWidgets import QApplication, QStackedWidget
+from PyQt6.QtWidgets import QApplication, QStackedWidget, QWidget
+from django.conf import settings
 
+import Actions
+import Bind
 import Consts
 import MainWindow, BindsWindow, AddBindsWindow
 
-from PyQt6.QtCore import QCoreApplication
+from PyQt6.QtCore import QCoreApplication, QSettings
 
 if __name__ == '__main__':
     sys.path.append('/')
@@ -23,5 +27,9 @@ if __name__ == '__main__':
     widget.addWidget(addBindsWindow)
     widget.setWindowIcon(QIcon(Consts.APPLICATION_ICON))
     widget.setMinimumSize(400, 400)
+    widget.setWindowIcon(QIcon("Icons/" + Consts.APPLICATION_ICON))
     widget.show()
+    setting = QSettings()
+    setting.setValue(Consts.SETTINGS_PLAYS, set())
+    setting.setValue(Consts.SETTINGS_STOPS, set())
     sys.exit(app.exec())

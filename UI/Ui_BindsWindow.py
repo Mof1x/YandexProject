@@ -8,6 +8,8 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+import Consts
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -45,4 +47,4 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.back_button.setText(_translate("MainWindow", "PushButton"))
+        self.back_button.setText(_translate("MainWindow", Consts.BACK))

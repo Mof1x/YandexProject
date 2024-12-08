@@ -1,10 +1,9 @@
-
 import Actions
 import Consts
 import SettingDialog
 
-from PyQt6.QtCore import QSettings
-from PyQt6.QtGui import QIcon
+from PyQt6.QtCore import QSettings, Qt
+from PyQt6.QtGui import QIcon, QKeySequence, QShortcut
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtWidgets import QMainWindow
 
@@ -31,12 +30,16 @@ class MainWindow(QMainWindow):
         self.ui.emergency_stop_button.setText(
             Consts.EMERGENCY_EXIT + " " + self.settings.value(Consts.SETTINGS_EMERGENCY_STOP,
                                                               Consts.DEFAULT_EMERGENCY_STOP))
-        self.ui.emergency_stop_button.clicked.connect(self.finish)
+        self.ui.emergency_stop_button.clicked.connect(self.close)
 
         self.ui.emergency_stop_button_settings.setIcon(QIcon("Icons/" + Consts.SETTINGS_ICON))
         self.ui.emergency_stop_button_settings.clicked.connect(self.goToSettings)
         self.ui.binds_button.clicked.connect(self.goToBinds)
         self.ui.add_binds_button.clicked.connect(self.goToAddBinds)
+
+        self.shortcut = QShortcut(QKeySequence(self.settings.value(Consts.SETTINGS_EMERGENCY_STOP,
+                                                                   Consts.DEFAULT_EMERGENCY_STOP)), self.widget)
+        self.shortcut.activated.connect(self.widget.close)
 
     def goToSettings(self):
         self.w1 = SettingDialog.Settings(Consts.SETTINGS_EMERGENCY_STOP, Consts.DEFAULT_EMERGENCY_STOP)
@@ -46,6 +49,10 @@ class MainWindow(QMainWindow):
             self.ui.emergency_stop_button.setText(
                 Consts.EMERGENCY_EXIT + " " + self.settings.value(Consts.SETTINGS_EMERGENCY_STOP,
                                                                   Consts.DEFAULT_EMERGENCY_STOP))
+            self.shortcut.disconnect()
+            self.shortcut = QShortcut(QKeySequence(self.settings.value(Consts.SETTINGS_EMERGENCY_STOP,
+                                                                       Consts.DEFAULT_EMERGENCY_STOP)), self.widget)
+            self.shortcut.activated.connect(self.close)
             print("Success!")
         else:
             print("Cancel!")
@@ -57,9 +64,6 @@ class MainWindow(QMainWindow):
     def goToAddBinds(self):
         self.widget.setCurrentIndex(self.widget.currentIndex() + 2)
         self.widget.currentWidget().initUI()
-
-    def finish(self):
-        self.close()
 
     def closeEvent(self, event):
         QApplication.closeAllWindows()

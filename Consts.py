@@ -9,12 +9,15 @@ APPLICATION_ICON = "icon.png"
 SETTINGS_ICON = "setting.png"
 TRASHCAN_ICON = "trashcan.png"
 EDIT_ICON = "edit.png"
+RESET_ICON = "reset.png"
 
 
 #Ключи от QSettings
 SETTINGS_EMERGENCY_STOP = "emergencyStop"
 SETTINGS_BINDS = "binds"
 SETTINGS_HOTKEY = "hotkeys"
+SETTINGS_PLAYS = "plays"
+SETTINGS_STOPS = "stops"
 
 
 DEFAULT_EMERGENCY_STOP = "Esc"
@@ -45,6 +48,7 @@ IN = "в"
 DURATION = "Длительность"
 MOUSE_WHEEL = "Колесо мыши"
 MOUSE_ACTION = "Действие мыши"
+KEYBOARD_ACTION = "Действие клавиатуры"
 MOVE_MOUSE = "Переместить курсор"
 ACTION = "Действие"
 HOTKEY = "Горячие клавиши"
@@ -56,6 +60,11 @@ YES = "Да"
 NO = "Нет"
 MILLISECONDS = "Миллисекунды"
 ALWAYS = "Всегда"
+REPEAT = "Повторить"
+BUTTON = "Кнопка"
+BUTTONS = "Кнопки"
+WRITE_TEXT = "Напечатать текст"
+
 #
 
 

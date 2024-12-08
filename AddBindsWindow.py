@@ -1,10 +1,11 @@
+import Actions
 import Bind
 import Consts
 import SettingDialog
-import AddActionItem
+import ActionItem
 
 from PyQt6.QtCore import QSettings
-from PyQt6.QtGui import QIcon
+from PyQt6.QtGui import QIcon, QShortcut, QKeySequence
 from PyQt6.QtWidgets import QPushButton, QListWidgetItem
 from PyQt6.QtWidgets import QMainWindow
 
@@ -16,11 +17,8 @@ class AddBindsWindow(QMainWindow):
 
     def __init__(self, widget):
         super().__init__()
-
         self.widget = widget
-
         self.initUI()
-        self.show()
 
     def initUI(self):
         self.settings = QSettings()
@@ -33,7 +31,6 @@ class AddBindsWindow(QMainWindow):
         self.list_widget = ListWidget(self)
         self.ui.parent_layout.addWidget(self.list_widget)
 
-
         self.ui.back_button.clicked.connect(self.goToMain)
         self.ui.apply_button.clicked.connect(self.apply)
         self.ui.hotkey_button.clicked.connect(self.goToSettings)
@@ -41,19 +38,14 @@ class AddBindsWindow(QMainWindow):
     def goToMain(self):
         self.widget.setCurrentIndex(self.widget.currentIndex() - 2)
 
-
     def apply(self):
-        arr = []
         if self.ui.line_edit.text() in self.settings.value(Consts.BINDS, Consts.DEFAULT_BINDS).keys():
             print("неверное имя")
         else:
-            for i in range(self.list_widget.count() - 1):
-                item = self.list_widget.item(i)
-                widget = self.list_widget.itemWidget(item)
-                arr.append(widget.action)
+            actions = self.list_widget.getActions()
             v = self.settings.value(Consts.BINDS, Consts.DEFAULT_BINDS)
             v[self.ui.line_edit.text()] = Bind.Bind(self.ui.line_edit.text(),
-                                                    self.ui.hotkey_label.text()[len(Consts.HOTKEY) + 1:], arr)
+                                                    self.ui.hotkey_label.text()[len(Consts.HOTKEY) + 1:], actions)
             self.settings.setValue(Consts.BINDS, v)
 
     def goToSettings(self):

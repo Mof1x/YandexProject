@@ -1,10 +1,12 @@
 import keyboard
-from PyQt6.QtCore import QSettings
-from PyQt6.QtGui import QIcon
+from PyQt6.QtCore import QSettings, QThreadPool
+from PyQt6.QtGui import QIcon, QShortcut, QKeySequence
 
 import Consts
 from PyQt6.QtWidgets import QWidget
 
+from Bind import Worker
+from CustomDialog import CustomDialog
 from UI import Ui_BindItem
 
 
@@ -19,6 +21,7 @@ class BindItem(QWidget):
         self.value = bind.actions
         self.hotkey = bind.hotkey
         self.settings = QSettings()
+        self.threadpool = QThreadPool()
         self.initUi()
 
     def initUi(self):
@@ -34,17 +37,20 @@ class BindItem(QWidget):
         self.ui.check_box.clicked.connect(self.onOff)
 
     def deleteButton(self):
-
-        hotkeys = self.settings.value(Consts.BINDS, Consts.DEFAULT_BINDS)
-        hotkeys.pop(self.name)
-        self.settings.setValue(Consts.BINDS, hotkeys)
-        self.list_widget.takeItem(self.list_widget.indexFromItem(self.item).row())
-
+        dialog = CustomDialog()
+        if dialog.exec():
+            hotkeys = self.settings.value(Consts.BINDS, Consts.DEFAULT_BINDS)
+            hotkeys.pop(self.name)
+            self.settings.setValue(Consts.BINDS, hotkeys)
+            self.list_widget.takeItem(self.list_widget.indexFromItem(self.item).row())
 
     def onOff(self):
         if self.ui.check_box.isChecked():
-            keyboard.add_hotkey(self.hotkey.lower(), self.bind.play)
+            keyboard.add_hotkey(self.hotkey.lower(), self.playBind)
         else:
+            # self.shortcut.disconnect()
             keyboard.remove_hotkey(self.hotkey.lower())
 
-
+    def playBind(self):
+        worker = Worker(self.bind)
+        self.threadpool.start(worker)

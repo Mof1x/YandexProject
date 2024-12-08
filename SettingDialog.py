@@ -35,29 +35,15 @@ class Settings(QDialog):
         self.ui.apply_button.clicked.connect(self.apply)
 
     def change(self):
-        flag = False
-        while True:
-            key_1 = keyboard.read_key()
-            if keyboard.is_pressed(key_1):
-                while keyboard.is_pressed(key_1):
-                    key_2 = keyboard.read_key()
-                    if key_1 != key_2:
-                        self.ui.label.setText((key_1 + " + " + key_2).title())
-                        flag = True
-                        break
-                else:
-                    self.ui.label.setText((key_1).title())
-                    flag = True
-            if flag:
-                break
+        key_1 = keyboard.read_key()
+        self.ui.label.setText((key_1).title())
 
     def apply(self):
         self.accept()
 
-    def keyPressEvent(self, event):
-        if event.key() == Qt.Key.Key_Escape:
-            pass
-
     def get(self):
         self.value = self.ui.label.text()
         return self.value
+
+    def keyPressEvent(self, event):
+        pass

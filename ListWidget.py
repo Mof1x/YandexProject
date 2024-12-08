@@ -1,7 +1,9 @@
+from tkinter import PanedWindow
+
 from PyQt6.QtWidgets import QListWidget, QListWidgetItem, QPushButton, QSizePolicy
 
 import Consts
-import AddActionItem
+import ActionItem
 
 
 class ListWidget(QListWidget):
@@ -11,6 +13,7 @@ class ListWidget(QListWidget):
 
     def initUi(self):
         item = QListWidgetItem(self)
+        self.addItem(item)
         add_button = QPushButton(Consts.ADD_ACTION)
         add_button.clicked.connect(self.addBind)
         self.setItemWidget(item, add_button)
@@ -20,15 +23,26 @@ class ListWidget(QListWidget):
 
 
     def addBind(self):
-        item = self.currentItem()
-        self.removeItemWidget(item)
-        widget = AddActionItem.AddActionItem(self, item)
+        self.takeItem(self.currentIndex().row())
+
+        item = QListWidgetItem(self)
+        widget = ActionItem.AddActionItem(self, item)
+        self.addItem(item)
         item.setSizeHint(widget.minimumSizeHint())
         self.setItemWidget(item, widget)
-        widget = QPushButton(Consts.ADD_ACTION)
-        item = QListWidgetItem(self)
-        item.setSizeHint(widget.minimumSizeHint())
 
+        item = QListWidgetItem(self)
+        widget = QPushButton(Consts.ADD_ACTION)
         self.addItem(item)
+        item.setSizeHint(widget.minimumSizeHint())
         self.setItemWidget(item, widget)
         widget.clicked.connect(self.addBind)
+
+
+    def getActions(self):
+        arr = []
+        for i in range(self.count() - 1):
+            item = self.item(i)
+            widget = self.itemWidget(item)
+            arr.append(widget.getAction())
+        return arr

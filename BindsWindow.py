@@ -1,7 +1,11 @@
+from threading import Thread
+
+from PyQt6.QtGui import QShortcut, QKeySequence
+
 import Consts
 
 from PyQt6.QtCore import QSettings
-from PyQt6.QtWidgets import QListWidgetItem
+from PyQt6.QtWidgets import QListWidgetItem, QApplication
 from PyQt6.QtWidgets import QMainWindow
 
 from UI import Ui_BindsWindow
@@ -28,10 +32,12 @@ class BindsWindow(QMainWindow):
             item.setSizeHint(row.minimumSizeHint())
             self.ui.list_widget.setItemWidget(item, row)
 
-        self.ui.back_button.setText(Consts.BACK)
         self.ui.back_button.clicked.connect(self.goToMain)
 
     def goToMain(self):
         self.widget.setCurrentIndex(self.widget.currentIndex() - 1)
-        self.widget.currentWidget().initUI()
 
+    def closeEvent(self, event):
+        QApplication.closeAllWindows()
+        QApplication.quit()
+        event.accept()

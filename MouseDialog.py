@@ -48,8 +48,8 @@ class MouseDialog(QDialog):
 
         self.x_edit = QLineEdit("0")
         self.y_edit = QLineEdit("0")
-        self.x_edit.setValidator(QIntValidator())
-        self.y_edit.setValidator(QIntValidator())
+        self.x_edit.setValidator(QIntValidator(-(10 ** 6), 10 ** 6))
+        self.y_edit.setValidator(QIntValidator(-(10 ** 6), 10 ** 6))
 
         self.ui.x_edit_layout.addRow("X: ", self.x_edit)
         self.ui.y_edit_layout.addRow("Y: ", self.y_edit)
@@ -61,14 +61,11 @@ class MouseDialog(QDialog):
         self.mouse_wheel = QSpinBox()
         self.ui.mouse_wheel_layout.addRow(Consts.MOUSE_WHEEL + ": ", self.mouse_wheel)
 
-        self.ui.apply_button.clicked.connect(self.applyButton)
+        self.ui.apply_button.clicked.connect(self.accept)
+        self.ui.back_button.clicked.connect(self.reject)
 
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key.Key_Escape:
-            pass
-
-    def applyButton(self):
-        self.accept()
+        pass
 
     def get(self):
         line = self.button_group_action.checkedButton().text()

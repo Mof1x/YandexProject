@@ -1,45 +1,62 @@
 import time
-from re import match
 
 import keyboard
 import mouse
-from PyQt6.QtWidgets import QFormLayout
+from PyQt6.QtCore import QSettings
 
 import Consts
 
 
 class Cycle:
-    def __init__(self, n, arr):
+    def __init__(self, always, n, arr):
+        self.always = always
         self.n = n
         self.arr = arr
 
-    def play(self):
-        for _ in range(self.n):
-            for action in self.arr:
-                action.play()
+    def play(self, name):
+        settings = QSettings()
+        if self.always:
+            while True:
+                stops = settings.value(Consts.SETTINGS_STOPS, set())
+                if name in stops:
+                    return None
+                for action in self.arr:
+                    action.play(name)
+        else:
+            for _ in range(self.n):
+                stops = settings.value(Consts.SETTINGS_STOPS, set())
+                if name in stops:
+                    return None
+                for action in self.arr:
+                    action.play(name)
 
 
 class Sleep:
     def __init__(self, time=0):
-        self.time = time
+        self.time = time / 1000
 
-    def play(self):
+    def play(self, name):
+        settings = QSettings()
+        stops = settings.value(Consts.SETTINGS_STOPS, set())
+        if name in stops:
+            return None
         time.sleep(self.time)
 
 
+
 class MouseAction:
-    NOTHING = 0
-    SINGLE_CLICK = 1
-    DOUBLE_CLICK = 2
-    PRESS = 3
-    RELEASE = 4
+    NOTHING = Consts.NOTHING
+    SINGLE_CLICK = Consts.SINGLE_CLICK
+    DOUBLE_CLICK = Consts.DOUBLE_CLICK
+    PRESS = Consts.PRESS
+    RELEASE = Consts.RELEASE
 
-    LMB = 5
-    RBM = 6
-    CBM = 7
+    LMB = Consts.LMB
+    RBM = Consts.RMB
+    CBM = Consts.MOUSE_WHEEL
 
-    DRAG = 8
-    MOVE = 9
+    DRAG = Consts.ON
+    MOVE = Consts.IN
 
     def __init__(self, action=None, button=None, action_move=None,
                  x_y=tuple(), duration=0, wheel=0):
@@ -51,8 +68,11 @@ class MouseAction:
         self.wheel = wheel
         self.arr = [action, button, action_move, x_y[0], x_y[1], duration, wheel]
 
-    def play(self):
-
+    def play(self, name):
+        settings = QSettings()
+        stops = settings.value(Consts.SETTINGS_STOPS, set())
+        if name in stops:
+            return None
         if self.DRAG == self.action_move:
             mouse.move(*self.x_y, duration=self.duration, absolute=False)
         elif self.MOVE == self.action_move:
@@ -71,21 +91,26 @@ class MouseAction:
 
 
 class KeyboardAction:
-    def __init__(self, key=None, press=None, release=None, send=None, write=None, delay=0, text=None):
+    SINGLE_CLICK = Consts.SINGLE_CLICK
+    PRESS = Consts.PRESS
+    RELEASE = Consts.RELEASE
+    WRITE_TEXT = Consts.WRITE_TEXT
+
+    def __init__(self, key=None, action=None ,text=None):
         self.key = key
-        self.press = press
-        self.release = release
-        self.send = send
-        self.write = write
-        self.delay = delay
+        self.action = action
         self.text = text
 
-    def play(self):
-        if self.press:
+    def play(self, name):
+        settings = QSettings()
+        stops = settings.value(Consts.SETTINGS_STOPS, set())
+        if name in stops:
+            return None
+        if self.action == self.PRESS:
             keyboard.press(self.key)
-        elif self.release:
+        elif self.action == self.RELEASE:
             keyboard.release(self.key)
-        elif self.send:
+        elif self.SINGLE_CLICK == self.action:
             keyboard.send(self.key)
-        elif self.write:
-            keyboard.write(self.text, delay=self.delay)
+        elif self.WRITE_TEXT == self.action:
+            keyboard.write(self.text)
