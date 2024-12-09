@@ -62,13 +62,13 @@ class KeyboardDialog(QDialog):
             self.ui.second_key_button.setText("")
 
     def change(self):
-        key_1 = keyboard.read_key()
+        key = keyboard.read_key().translate(Consts.KEYBOARD_KEYS).capitalize()
         if self.sender() == self.ui.first_key_button:
-            self.ui.first_key_button.setText(key_1.capitalize())
+            self.ui.first_key_button.setText(key)
         elif self.sender() == self.ui.second_key_button:
-            self.ui.second_key_button.setText(key_1.capitalize())
+            self.ui.second_key_button.setText(key)
         elif self.sender() == self.ui.third_key_button:
-            self.ui.third_key_button.setText(key_1.capitalize())
+            self.ui.third_key_button.setText(key)
 
     def keyPressEvent(self, event):
         pass

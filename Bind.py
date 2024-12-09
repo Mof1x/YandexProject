@@ -14,7 +14,7 @@ class Bind:
         self.actions = actions
 
 
-class Worker(QRunnable):
+class BindThread(QRunnable):
     def __init__(self, bind):
         self.name = bind.name
         self.hotkey = bind.hotkey

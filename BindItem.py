@@ -5,7 +5,7 @@ from PyQt6.QtGui import QIcon, QShortcut, QKeySequence
 import Consts
 from PyQt6.QtWidgets import QWidget
 
-from Bind import Worker
+from Bind import BindThread
 from CustomDialog import CustomDialog
 from UI import Ui_BindItem
 
@@ -61,5 +61,5 @@ class BindItem(QWidget):
             self.settings.setValue(Consts.SETTINGS_ON_OFF_BINDS, on_off)
 
     def playBind(self):
-        worker = Worker(self.bind)
+        worker = BindThread(self.bind)
         self.threadpool.start(worker)

@@ -35,8 +35,8 @@ class Settings(QDialog):
         self.ui.apply_button.clicked.connect(self.apply)
 
     def change(self):
-        key_1 = keyboard.read_key()
-        self.ui.label.setText((key_1).title())
+        key = keyboard.read_key().translate(Consts.KEYBOARD_KEYS)
+        self.ui.label.setText(key.capitalize())
 
     def apply(self):
         self.accept()

@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d8253c5-fcf4-4bfc-86de-0e73d4f1ec5a" name="Changes" comment="prefinal">
+    <list default="true" id="1d8253c5-fcf4-4bfc-86de-0e73d4f1ec5a" name="Changes" comment="final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddBindsWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/AddBindsWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActionItem.py" beforeDir="false" afterPath="$PROJECT_DIR$/ActionItem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bind.py" beforeDir="false" afterPath="$PROJECT_DIR$/Bind.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BindItem.py" beforeDir="false" afterPath="$PROJECT_DIR$/BindItem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Consts.py" beforeDir="false" afterPath="$PROJECT_DIR$/Consts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/CustomDialog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MouseDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/MouseDialog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KeyboardDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/KeyboardDialog.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SettingDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/SettingDialog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/Ui_FinalActionItem.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/Ui_FinalActionItem.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +122,8 @@
       <workItem from="1733410702108" duration="128000" />
       <workItem from="1733415480452" duration="12112000" />
       <workItem from="1733572072903" duration="25698000" />
-      <workItem from="1733649276058" duration="20489000" />
+      <workItem from="1733649276058" duration="21168000" />
+      <workItem from="1733767527682" duration="2211000" />
     </task>
     <task id="LOCAL-00001" summary="Start">
       <option name="closed" value="true" />
@@ -165,7 +165,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733671602661</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="final">
+      <option name="closed" value="true" />
+      <created>1733674672950</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733674672950</updated>
+    </task>
+    <task id="LOCAL-00007" summary="final">
+      <option name="closed" value="true" />
+      <created>1733767542914</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733767542914</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,11 +215,12 @@
     <MESSAGE value="add Mouse Actions" />
     <MESSAGE value="Add CycleAction" />
     <MESSAGE value="prefinal" />
-    <option name="LAST_COMMIT_MESSAGE" value="prefinal" />
+    <MESSAGE value="final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/YandexProject$MouseDialog.coverage" NAME="MouseDialog Coverage Results" MODIFIED="1733165287487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/YandexProject$AddBindsWindow.coverage" NAME="AddBindsWindow Coverage Results" MODIFIED="1733151477230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/YandexProject$main.coverage" NAME="main Coverage Results" MODIFIED="1733674472774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/YandexProject$main.coverage" NAME="main Coverage Results" MODIFIED="1733773732818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

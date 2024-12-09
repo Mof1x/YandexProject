@@ -7,7 +7,7 @@ import Consts
 from PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QDialog, QDialogButtonBox, QVBoxLayout, \
     QProgressDialog, QInputDialog, QSizePolicy
 
-from Consts import WRITE_TEXT
+from Consts import WRITE_TEXT, TIMER
 from CustomDialog import CustomDialog
 from KeyboardDialog import KeyboardDialog
 from MouseDialog import MouseDialog
@@ -111,7 +111,9 @@ class CycleAddActionItem(ActionItem):
 
         self.ui.list_item_layout.addWidget(self.list_widget)
 
-        self.item.setSizeHint(QSize(350, 300))
+        self.item.setSizeHint(QSize(0, 350))
+
+        self.ui.always_button.click()
 
         self.ui.edit_button.setIcon(QIcon("Icons/" + Consts.EDIT_ICON))
         self.ui.delete_button.setIcon(QIcon("Icons/" + Consts.TRASHCAN_ICON))
